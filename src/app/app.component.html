@@ -1,0 +1,58 @@
+<div class="search">
+  <input type="search" placeholder="location..." [(ngModel)]="countryName" (keyup)="getInput()">
+</div>
+<div class="container">
+  <div class="upper-data">
+    <!-- ../assets/ -->
+    <img src="assets/day.png" *ngIf="data.current.is_day == 1">
+    <img src="assets/night.png" *ngIf="data.current.is_day == 0">
+    <div class="weather-data">
+      <div class="location">{{data.location.name}}</div>
+      <div class="temperature">{{data.current.temp_c | number:'1.0-0'}}°C</div>
+    </div>
+  </div>
+  <div class="lower-data">
+    <div class="more-info-label">
+      More Information
+    </div>
+    <div class="more-info-container">
+      <div class="info-box">
+        <div class="info-box-label">
+          <img src="assets/hot.png">
+          <span>max</span>
+        </div>
+        <div class="info-box-value">
+          {{data.forecast.forecastday[0].day.maxtemp_c}}°C
+        </div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-label">
+          <img src="assets/cold.png">
+          <span>min</span>
+        </div>
+        <div class="info-box-value">
+          {{data.forecast.forecastday[0].day.mintemp_c}}°C
+        </div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-label">
+          <img src="assets/humidity.png">
+          <span>humidity</span>
+        </div>
+        <div class="info-box-value">
+          {{data.current.humidity}}%
+        </div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-label">
+          <img src="assets/wind.png">
+          <span>wind</span>
+        </div>
+        <div class="info-box-value">
+          {{data.current.wind_kph}} K/H
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
